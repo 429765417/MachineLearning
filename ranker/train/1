@@ -1,0 +1,49 @@
+#!--*--coding:utf8--*--
+
+import tensorflow as tf
+import numpy as np
+
+tf.app.flags.DEFINE_string('version', 'test',"模型版本号")
+tf.app.flags.DEFINE_interger('filter_num', 200,"卷积器数量")
+tf.app.flags.DEFINE_string('filter_sizes', '1,2,3,5',"卷积器尺寸")
+tf.app.flags.DEFINE_interger('total_step', 20000,"total_step")
+tf.app.flags.DEFINE_interger('every_step', 2000,"every_step")
+tf.app.flags.DEFINE_interger('batch_size', 64,"batch_size")
+
+FLAGS = tf.app.flags.FLAGS
+
+class NN:
+    def __init__(self):
+        self.neter = NET(vocab,embed_dim)
+        self.data_loader_train = DataLoader(FLAGS.batch_size)
+        self.data_loader_test = DataLoader(FLAGS.batch_size)
+        self.train_path=os.path.join(DATA_DIR,FLAGS.version,"train_id")
+        self.test_path=os.path.join(DATA_DIR,FLAGS.version,"test_id")
+        self.sess = tf.Session()
+        self.load_res()
+        pass
+
+    def load_res(self):
+        self.data_loader_train.create_batches(self.train_path)
+        self.data_loader_test.create_batches(self.test_path)
+
+
+    def train_step(self):
+
+
+    def dev_step(self):
+
+    def run(self):
+        for step_idx in range(FLAGS.total_step):
+            self.train_step()
+            if step_idx % FLAGS.every_step == 0:
+                self.dev_step()
+
+
+
+def main(argv):
+    nn_obj = NN()
+    nn_obj.run()
+
+if __name__=='__main__':
+    tf.app.run()
